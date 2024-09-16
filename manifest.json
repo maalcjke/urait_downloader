@@ -1,0 +1,24 @@
+{
+    "manifest_version": 3,
+    "name": "Urait Downloader",
+    "version": "1.0",
+    "description": "Расширение для преобразования страниц urait'а в pdf",
+    "permissions": ["activeTab", "scripting", "storage"],
+    "host_permissions": ["*://*.urait.ru/*"],
+    "action": {
+      "default_popup": "popup.html"
+    },
+    "content_scripts": [
+      {
+        "matches": ["*://*.urait.ru/*"],
+        "js": ["libs/html2canvas.min.js", "libs/jspdf.umd.min.js", "src/content.js"],
+        "run_at": "document_idle"
+      }
+    ],
+    "web_accessible_resources": [
+      {
+        "resources": ["libs/*", "src/*"],
+        "matches": ["*://*.urait.ru/*"]
+      }
+    ]
+  }
